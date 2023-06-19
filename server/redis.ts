@@ -13,11 +13,11 @@ export default client;
 
 export const key = {
   link: (address: string, domain_id?: number, user_id?: number) =>
-    `${address}-${domain_id || ""}-${user_id || ""}`,
-  domain: (address: string) => `d-${address}`,
-  stats: (link_id: number) => `s-${link_id}`,
-  host: (address: string) => `h-${address}`,
-  user: (emailOrKey: string) => `u-${emailOrKey}`
+    `${env.REDIS_PREFIX}-${address}-${domain_id || ""}-${user_id || ""}`,
+  domain: (address: string) => `${env.REDIS_PREFIX}-d-${address}`,
+  stats: (link_id: number) => `${env.REDIS_PREFIX}-s-${link_id}`,
+  host: (address: string) => `${env.REDIS_PREFIX}-h-${address}`,
+  user: (emailOrKey: string) => `${env.REDIS_PREFIX}-u-${emailOrKey}`
 };
 
 export const remove = {
